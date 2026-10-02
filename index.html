@@ -1,0 +1,1218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ziad Essam | Full Stack Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#061426;
+      --bg2:#0a1d34;
+      --card:#0c2340;
+      --text:#f4f8ff;
+      --muted:#a9bad0;
+      --blue:#42b8ff;
+      --blue2:#178de0;
+      --line:rgba(120,190,255,.2);
+      --shadow:0 20px 60px rgba(0,0,0,.25);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"Inter",sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(23,141,224,.16), transparent 30%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:min(1150px,92%);
+      margin:auto;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:1000;
+      background:rgba(6,20,38,.85);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav-container{
+      min-height:75px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:20px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .logo span{
+      color:var(--blue);
+      font-size:25px;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:28px;
+    }
+
+    .nav-links a{
+      color:var(--muted);
+      font-size:14px;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .nav-links a:hover{
+      color:var(--blue);
+    }
+
+    .nav-btn{
+      padding:10px 18px;
+      border:1px solid var(--blue);
+      border-radius:10px;
+      color:var(--blue) !important;
+    }
+
+    .nav-btn:hover{
+      background:var(--blue);
+      color:#061426 !important;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero{
+      min-height:100vh;
+      padding-top:120px;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      align-items:center;
+      gap:70px;
+    }
+
+    .hero-copy small{
+      display:inline-block;
+      color:var(--blue);
+      font-weight:700;
+      margin-bottom:15px;
+      letter-spacing:1px;
+    }
+
+    .hero-copy h1{
+      font-size:clamp(48px,7vw,82px);
+      line-height:1.05;
+      margin-bottom:20px;
+      font-weight:800;
+    }
+
+    .hero-copy h1 span{
+      display:block;
+    }
+
+    .hero-role{
+      font-size:25px;
+      color:var(--muted);
+      margin-bottom:30px;
+      font-weight:600;
+    }
+
+    .hero-role span{
+      color:var(--blue);
+    }
+
+    .about-btn{
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      padding:13px 22px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      color:#03111f;
+      font-weight:800;
+      transition:.3s;
+      min-width:150px;
+    }
+
+    .about-btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 12px 30px rgba(66,184,255,.25);
+    }
+
+    .hero-image{
+      display:flex;
+      justify-content:center;
+      position:relative;
+    }
+
+    .hero-image::before{
+      content:"";
+      position:absolute;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background:rgba(66,184,255,.12);
+      filter:blur(25px);
+      z-index:-1;
+    }
+
+    .hero-image img{
+      width:340px;
+      height:420px;
+      object-fit:cover;
+      border-radius:25px;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+    }
+
+    /* ================= GENERAL SECTIONS ================= */
+
+    section{
+      padding:100px 0;
+      scroll-margin-top:75px;
+    }
+
+    .section-heading{
+      margin-bottom:50px;
+    }
+
+    .section-number{
+      color:var(--blue);
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:2px;
+      margin-bottom:8px;
+    }
+
+    .section-heading h2{
+      font-size:42px;
+      line-height:1.2;
+    }
+
+    .section-heading p{
+      color:var(--muted);
+      margin-top:12px;
+      max-width:700px;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about-grid{
+      display:flex;
+      justify-content:center;
+      width:100%;
+    }
+
+    .about-copy{
+      width:min(1000px,100%);
+      min-height:430px;
+      padding:55px 60px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:left;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .about-copy p{
+      color:var(--muted);
+      margin-bottom:30px;
+      font-size:20px;
+      line-height:2;
+    }
+
+    .about-copy p:last-child{
+      margin-bottom:0;
+    }
+
+    .about-copy strong{
+      color:#e9f5ff;
+      font-size:20px;
+    }
+
+    /* ================= EDUCATION ================= */
+
+    .timeline{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
+    }
+
+    .timeline-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:30px;
+      box-shadow:var(--shadow);
+      transition:.3s;
+    }
+
+    .timeline-card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(66,184,255,.45);
+    }
+
+    .timeline-card:nth-child(3){
+      grid-column:1 / -1;
+      width:60%;
+      justify-self:center;
+    }
+
+    .timeline-date{
+      color:var(--blue);
+      font-size:14px;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    .timeline-card h3{
+      font-size:23px;
+      margin-bottom:10px;
+    }
+
+    .timeline-card h4{
+      color:var(--blue);
+      font-size:17px;
+      margin-bottom:12px;
+    }
+
+    .timeline-card p{
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    /* ================= SKILLS ================= */
+
+    .skills-category{
+      margin-bottom:40px;
+    }
+
+    .skills-category:last-child{
+      margin-bottom:0;
+    }
+
+    .skills-category h3{
+      font-size:24px;
+      color:var(--blue);
+      margin-bottom:20px;
+      padding-left:12px;
+      border-left:4px solid var(--blue);
+    }
+
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .skill{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:22px;
+      text-align:center;
+      font-weight:700;
+      transition:.3s;
+    }
+
+    .skill:hover{
+      transform:translateY(-4px);
+      border-color:var(--blue);
+      color:var(--blue);
+    }
+
+    /* ================= PROJECTS ================= */
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:25px;
+    }
+
+    .project-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:30px;
+      box-shadow:var(--shadow);
+      transition:.3s;
+    }
+
+    .project-card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(66,184,255,.45);
+    }
+
+    .project-card h3{
+      font-size:23px;
+      margin-bottom:12px;
+    }
+
+    .project-card p{
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+
+    .tech{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:22px;
+    }
+
+    .tech span{
+      padding:6px 10px;
+      border-radius:8px;
+      background:rgba(66,184,255,.1);
+      color:var(--blue);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .project-links{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .project-links a{
+      padding:10px 15px;
+      border-radius:9px;
+      border:1px solid var(--line);
+      color:var(--blue);
+      font-size:13px;
+      font-weight:700;
+      transition:.3s;
+    }
+
+    .project-links a:hover{
+      background:var(--blue);
+      color:#061426;
+    }
+
+    /* ================= CONTACT ================= */
+
+    .contact-card{
+      background:linear-gradient(
+        135deg,
+        rgba(66,184,255,.12),
+        rgba(12,35,64,.9)
+      );
+      border:1px solid var(--line);
+      border-radius:25px;
+      padding:55px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-card h2{
+      font-size:38px;
+      margin-bottom:15px;
+    }
+
+    .contact-card p{
+      color:var(--muted);
+      margin-bottom:30px;
+    }
+
+    .contact-info{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:18px;
+      margin-bottom:35px;
+    }
+
+    .contact-info a{
+      padding:12px 18px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      color:var(--muted);
+      transition:.3s;
+    }
+
+    .contact-info a:hover{
+      color:var(--blue);
+      border-color:var(--blue);
+    }
+
+    .contact-form{
+      max-width:700px;
+      margin:auto;
+      display:grid;
+      gap:15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      border:1px solid var(--line);
+      background:rgba(3,17,31,.5);
+      color:var(--text);
+      padding:14px 16px;
+      border-radius:10px;
+      outline:none;
+      font-family:inherit;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus{
+      border-color:var(--blue);
+    }
+
+    .contact-form textarea{
+      min-height:140px;
+      resize:vertical;
+    }
+
+    .contact-form button{
+      border:none;
+      cursor:pointer;
+      padding:14px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      color:#03111f;
+      font-weight:800;
+      font-family:inherit;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:25px 0;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width:1000px){
+
+      .hero-grid{
+        gap:40px;
+      }
+
+      .skills-grid{
+        grid-template-columns:repeat(3,1fr);
+      }
+    }
+
+    @media(max-width:850px){
+
+      .nav-links{
+        gap:15px;
+      }
+
+      .nav-links a:not(.nav-btn){
+        display:none;
+      }
+
+      .hero{
+        padding-top:110px;
+      }
+
+      .hero-grid{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+
+      .hero-copy{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+      }
+
+      .hero-image{
+        order:-1;
+      }
+
+      .hero-image img{
+        width:280px;
+        height:350px;
+      }
+
+      .section-heading{
+        margin-bottom:35px;
+      }
+
+      .section-heading h2{
+        font-size:35px;
+      }
+
+      .about-copy{
+        min-height:auto;
+        padding:35px 30px;
+      }
+
+      .about-copy p{
+        font-size:18px;
+        line-height:1.9;
+      }
+
+      .about-copy strong{
+        font-size:18px;
+      }
+
+      .timeline{
+        grid-template-columns:1fr;
+      }
+
+      .timeline-card:nth-child(3){
+        grid-column:auto;
+        width:100%;
+      }
+
+      .skills-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .projects-grid{
+        grid-template-columns:1fr;
+      }
+
+      .contact-card{
+        padding:40px 25px;
+      }
+    }
+
+    @media(max-width:560px){
+
+      .container{
+        width:90%;
+      }
+
+      nav{
+        position:fixed;
+      }
+
+      .nav-container{
+        min-height:68px;
+      }
+
+      .logo{
+        font-size:17px;
+      }
+
+      .logo span{
+        font-size:22px;
+      }
+
+      .hero-copy h1{
+        font-size:48px;
+      }
+
+      .hero-role{
+        font-size:20px;
+      }
+
+      .hero-image img{
+        width:240px;
+        height:300px;
+      }
+
+      section{
+        padding:75px 0;
+      }
+
+      .section-heading h2{
+        font-size:31px;
+      }
+
+      .about-copy{
+        padding:30px 22px;
+      }
+
+      .about-copy p{
+        font-size:17px;
+        line-height:1.8;
+      }
+
+      .about-copy strong{
+        font-size:17px;
+      }
+
+      .skills-grid{
+        grid-template-columns:1fr;
+      }
+
+      .timeline-card{
+        padding:25px;
+      }
+
+      .contact-card h2{
+        font-size:30px;
+      }
+
+      .contact-info{
+        flex-direction:column;
+      }
+
+      .contact-info a{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <nav>
+    <div class="container nav-container">
+
+      <a href="#home" class="logo">
+        <span>&lt;/&gt;</span>
+        My Portfolio
+      </a>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact" class="nav-btn">About Me</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero" id="home">
+
+    <div class="container hero-grid">
+
+      <div class="hero-copy">
+
+        <small>WELCOME TO MY PORTFOLIO</small>
+
+        <h1>
+          <span>Ziad Essam</span>
+        </h1>
+
+        <div class="hero-role">
+          Full Stack <span>Developer</span>
+        </div>
+
+        <a href="#about" class="about-btn">
+          About Me
+        </a>
+
+      </div>
+
+      <div class="hero-image">
+
+        <img
+          src="ziad-photo.jpeg"
+          alt="Ziad Essam - Full Stack Developer"
+        >
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="section-number">02</div>
+
+        <h2>About Me</h2>
+
+      </div>
+
+      <div class="about-grid">
+
+        <div class="about-copy">
+
+          <p>
+            I’m <strong>Ziad Essam</strong>, a Computer Science student at
+            <strong>Menoufia University</strong> and an aspiring
+            <strong>Full Stack Developer</strong> specializing in
+            <strong>Angular and .NET</strong>.
+          </p>
+
+          <p>
+            My journey started with frontend development, where I learned
+            <strong>HTML, CSS, and JavaScript</strong>, then progressed to
+            <strong>Angular</strong>. I later expanded my skills into backend
+            development using <strong>C# and .NET</strong>, along with
+            <strong>SQL Server</strong>, to build complete web applications.
+          </p>
+
+          <p>
+            <strong>Skills:</strong>
+            Angular, JavaScript, HTML, CSS, Bootstrap, Tailwind CSS,
+            C#, .NET, SQL Server, C++, Java, Git &amp; GitHub.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= EDUCATION ================= -->
+
+  <section id="education">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="section-number">03</div>
+
+        <h2>Education &amp; Training</h2>
+
+      </div>
+
+      <div class="timeline">
+
+        <!-- University -->
+
+        <div class="timeline-card">
+
+          <div class="timeline-date">
+            2023 – 2027 (Expected)
+          </div>
+
+          <h3>
+            Faculty of Computers and Information
+          </h3>
+
+          <h4>
+            Menoufia University
+          </h4>
+
+          <p>
+            Bachelor's Degree in Computer and Information.
+          </p>
+
+        </div>
+
+        <!-- ITI -->
+
+        <div class="timeline-card">
+
+          <div class="timeline-date">
+            2026 – Present
+          </div>
+
+          <h3>
+            Information Technology Institute (ITI)
+          </h3>
+
+          <h4>
+            Full Stack Development – .NET / Angular
+          </h4>
+
+          <p>
+            Practical training focused on modern web development.
+          </p>
+
+        </div>
+
+        <!-- Route Academy -->
+
+        <div class="timeline-card">
+
+          <div class="timeline-date">
+            2026 – Present
+          </div>
+
+          <h3>
+            Route Academy
+          </h3>
+
+          <h4>
+            Front-End Development Diploma
+          </h4>
+
+          <p>
+            Practical training focused on building responsive and interactive
+            web applications using modern front-end technologies.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="section-number">04</div>
+
+        <h2>Skills</h2>
+
+      </div>
+
+      <!-- Technical Skills -->
+
+      <div class="skills-category">
+
+        <h3>Technical Skills</h3>
+
+        <div class="skills-grid">
+
+          <div class="skill">Angular</div>
+          <div class="skill">.NET</div>
+          <div class="skill">C#</div>
+          <div class="skill">TypeScript</div>
+
+          <div class="skill">JavaScript</div>
+          <div class="skill">HTML5</div>
+          <div class="skill">CSS3</div>
+          <div class="skill">Bootstrap</div>
+
+          <div class="skill">SQL Server</div>
+          <div class="skill">Entity Framework</div>
+          <div class="skill">Git &amp; GitHub</div>
+          <div class="skill">OOP &amp; DSA</div>
+
+        </div>
+
+      </div>
+
+      <!-- Tools -->
+
+      <div class="skills-category">
+
+        <h3>Tools</h3>
+
+        <div class="skills-grid">
+
+          <div class="skill">Git</div>
+          <div class="skill">GitHub</div>
+          <div class="skill">Visual Studio Code</div>
+          <div class="skill">Visual Studio Community</div>
+
+        </div>
+
+      </div>
+
+      <!-- Language Skills -->
+
+      <div class="skills-category">
+
+        <h3>Language Skills</h3>
+
+        <div class="skills-grid">
+
+          <div class="skill">Arabic</div>
+          <div class="skill">English</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="section-number">05</div>
+
+        <h2>Projects</h2>
+
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+
+        <div class="project-card">
+
+          <h3>
+            Car Service Management System
+          </h3>
+
+          <p>
+            A web-based car service management system designed to manage
+            vehicles, services and customer bookings.
+          </p>
+
+          <div class="tech">
+
+            <span>Angular</span>
+            <span>.NET</span>
+            <span>SQL Server</span>
+
+          </div>
+
+          <div class="project-links">
+
+            <a href="#contact">
+              View Project
+            </a>
+
+            <a
+              href="https://github.com/ziad-essam80"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- Project 2 -->
+
+        <div class="project-card">
+
+          <h3>
+            E-Commerce Website
+          </h3>
+
+          <p>
+            A responsive e-commerce website with a modern interface
+            designed for browsing products and interacting with the store.
+          </p>
+
+          <div class="tech">
+
+            <span>Angular</span>
+            <span>TypeScript</span>
+            <span>Bootstrap</span>
+
+          </div>
+
+          <div class="project-links">
+
+            <a href="#contact">
+              View Project
+            </a>
+
+            <a
+              href="https://github.com/ziad-essam80"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- More Projects -->
+
+        <div class="project-card">
+
+          <h3>
+            More Projects
+          </h3>
+
+          <p>
+            Explore more of my projects and coding work on my GitHub profile.
+          </p>
+
+          <div class="project-links">
+
+            <a
+              href="https://github.com/ziad-essam80"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit GitHub
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="contact-card">
+
+        <h2>
+          Let's Build Something Great Together
+        </h2>
+
+        <p>
+          I'm open to opportunities, collaborations and exciting projects.
+          Feel free to reach out.
+        </p>
+
+        <div class="contact-info">
+
+          <a href="#">
+            Add your email
+          </a>
+
+          <a
+            href="https://linkedin.com/in/ziad-essam-652240331/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            linkedin.com/in/ziad-essam-652240331/
+          </a>
+
+          <a
+            href="https://github.com/ziad-essam80"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            github.com/ziad-essam80
+          </a>
+
+        </div>
+
+        <form
+          class="contact-form"
+          onsubmit="sendMessage(event)"
+        >
+
+          <input
+            type="text"
+            placeholder="Your Name"
+            required
+          >
+
+          <input
+            type="email"
+            placeholder="Your Email"
+            required
+          >
+
+          <textarea
+            placeholder="Your Message"
+            required
+          ></textarea>
+
+          <button type="submit">
+            Send Message
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    © 2026 Ziad Essam. Built with passion.
+
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    function syncAboutButton(){
+
+      const name = document.querySelector('.hero-copy h1 span');
+      const btn = document.querySelector('.about-btn');
+
+      if(name && btn){
+
+        btn.style.width =
+          name.getBoundingClientRect().width + 'px';
+
+      }
+
+    }
+
+    window.addEventListener('load', syncAboutButton);
+    window.addEventListener('resize', syncAboutButton);
+
+    function sendMessage(event){
+
+      event.preventDefault();
+
+      alert("Thank you for your message! I'll get back to you soon.");
+
+      event.target.reset();
+
+    }
+
+  </script>
+
+</body>
+</html>
